@@ -57,13 +57,18 @@ function getIpAddress() {
         // we can also get ip address using the following ipify api method. gotoipify.org and copy 
         // code in first box (ipv4). 
         // fetch('https://api.ipify.org?format=json')
+        ////this then is used to convert the response that get from api to json format
         // .then(response => response.json())
+        ////this then is used to handle the data that we got.
         // .then(data => {
             //   document.getElementById('ip').innerHTML = data.ip;
             // })
             // .catch(error => {
                 //   document.getElementById('ip').innerHTML = error;
                 // });
+
+
+                // //below is optional for you
                 // setInterval(() => {
                     //   fetch('https://api.ipify.org?format=json')
                     //   .then(response => response.json())
