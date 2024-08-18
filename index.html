@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Practice Html CSS JS 10 Real World Projects</title>
+    <link rel="stylesheet" href="style.css">
+    <script src=
+    "https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js">
+        </script>
+</head>
+
+<body>
+    
+    <div class="container">
+        <h2>Internet Connection Status Detector</h2>
+        <b class="margin">Connection Status:</b> <span id="status"></span> <br>
+        <b class="margin">IP Address:</b> <span id="ip"></span> <br>
+        <b class="margin">Network Strength:</b> <span id="strength"></span>
+    </div>
+
+    <script src="script.js">
+/*        $(document).ready(function(){
+            $.ajax({
+                type: "GET",
+                url: "https://ipapi.co/json/",
+                success: function(data){
+                    $("#ip").text(data.ip);
+                    }
+                    });
+                    $.ajax({
+                        type: "GET",
+                        url: "https://ipapi.co/status/",
+                        success: function(data){
+                            $("#status").text(data.status);
+                            }
+                            });
+                            $.ajax("https://ipapi.co/network/", {
+                                type: "GET",
+                                success: function(data){
+                                    $("#strength").text(data.strength);
+                                    }
+                                    });
+                                    }); */
+    </script>
+    
+</body>
+</html>
