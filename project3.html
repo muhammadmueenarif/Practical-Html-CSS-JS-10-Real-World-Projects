@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RGB Color Generator</title>
+    
+    <style>
+        * {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background: linear-gradient(to right, #4e54c8,#8f94fb );
+    font-family: Arial, sans-serif;
+}
+
+.container {
+    width: 40%;
+    height: 70vh;
+    background-color: white;
+    margin-left: 34%;
+    margin-top: 10%;
+}
+
+.color-output {
+    width: 70%;
+    height: 25vh;
+    background-color: rgb(0, 0, 0);
+    margin-left: 15%;
+    margin-top: 5%;
+}
+
+h2 {
+    text-align: center;
+}
+
+label {
+    /* margin-left: 20%; */
+    position: absolute;
+    margin-top: 50px;
+    margin-left: 7%;
+}
+
+input {
+    position: absolute;
+    margin-top: 50px;
+    margin-left: 15%;
+}
+
+.boxes {
+    width: 100%;
+    height: 10vh;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    /* background-color: aqua; */
+    margin-top: 20%;
+}
+
+button {
+    width: 30%;
+    height: 5vh;
+    cursor: pointer;
+}
+
+.color-code {
+    width: 30%;
+    height: 5vh;
+    background-color: rgb(180, 169, 169);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+    </style>
+
+</head>
+<body>
+    
+    <div class="container">
+        <h2><u>RGB Color Generator</u></h2>
+        <div class="color-output" id="output"></div>
+        <div class="color-input">
+            <label for="red">Red:</label>
+            <!-- input rangebar line we can also use numbers as input and set their limit from 0 to 256
+             and give default value of 128-->
+             <input type="range" id="red" min="0" max="255" value
+             oninput="updateColor(this.value, 'red')"> <span>0</span> <br>
+            
+             <label for="green">Green:</label>
+            <input type="range" id="green" min="0" max="255" value
+            oninput="updateColor(this.value, 'green')"> <br>
+            <label for="blue">Blue:</label>
+            <input type="range" id="blue" min="0" max="255" value
+            oninput="updateColor(this.value, 'blue')">
+            <div class="boxes">
+                <button id="copy-color" onclick="copyCode()">Copy RGB Value</button>
+                <div class="color-code" id="rgb-code">
+                </div>
+            </div> 
+
+        </div>
+    </div>
+
+
+    <script>
+        // rgb color generator using js. three lines of red green and blue color. by default set to 128. as 
+// we move line forward and backward, it will change color accordingly. below are two boxes. one is button
+// and other will display color code of the color that is set. when we click button, it will copy the code 
+// to clipboard and show alert that colorcode copy to clipboard.
+
+function Checker() {
+    var red = document.getElementById('red').value;
+    var green = document.getElementById('green').value;
+    var blue = document.getElementById('blue').value;
+    document.getElementById('output').style.backgroundColor = `rgb(${red}, ${green}, ${blue})`;
+    document.getElementById('rgb-code').innerHTML = `rgb(${red}, ${green}, ${blue})`;
+}
+
+setInterval(Checker, 20);
+
+function copyCode() {
+    var colorcode = document.getElementById('rgb-code').innerHTML;
+    navigator.clipboard.writeText(`${colorcode}`)
+    .then(()=>{
+        alert("Color code copied to clipboard");
+    })
+    .catch((error)=> {
+        console.error('Error copying text: ', error);
+    });
+    ;
+}
+    </script>
+
+</body>
+</html>
