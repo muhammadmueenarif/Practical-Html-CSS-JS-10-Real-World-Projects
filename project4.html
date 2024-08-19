@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Counter Application</title>
+
+    <style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: sans-serif;
+}
+
+body {
+    background-color: #b0b0b0;
+    min-height: 100vh;
+    color: #333;
+    line-height: 1.5;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.container {
+    background-color: #fff;
+    padding: 20px;
+    text-align: center;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    animation: containerAnimation 1s ease-in-out;
+}
+
+@keyframes containerAnimation {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(-20px);
+        }
+}
+
+h1 {
+    font-size: 36px;
+    margin-bottom: 12px;
+}
+
+#value {
+    font-size: 72px;
+    font-weight: bold;
+    color: #007bff;
+    transition: color 0.3s ease-in-out;
+}
+
+#value.negative {
+    color: red;
+}
+
+.btn {
+    text-transform: uppercase;
+    background: #007bff;
+    color: #fff;
+    padding: 10px 20px;
+    font-size: 18px;
+    border: none;
+    border-radius: 5px;
+    margin: 8px;
+    cursor: pointer;
+    transition: background 0.3s ease-in-out;
+}
+
+.btn:hover {
+    background: #0056b3;
+}
+    </style>
+
+</head>
+
+<body>
+    
+    <div class="container">
+        <h1>Counter</h1>
+        <span id="value">0</span>
+<div>
+    <button class="btn" id="decrease">Decrease</button>
+    <button class="btn" id="reset">Reset</button>
+    <button class="btn" id="increase">Increase</button>
+</div>        
+    
+</div>
+
+
+
+    <script>
+
+
+let count = 0;
+const value = document.querySelector("#value");
+const btns = document.querySelectorAll(".btn") //this will select all with class btn.
+// we used this so that we can use for each loop and iterate over buttons.
+btns.forEach(btn=> {
+    btn.addEventListener("click", e=> {
+        let elementId = e.currentTarget.id; //when button will press, id of that button will store 
+        // in this variable. 
+        if(elementId == "decrease") {
+            count--;
+            } else if(elementId == "reset") {
+                count=0;
+                } else {
+                    count++;
+                    }
+                    value.textContent = count; //this will update the value in the html.
+            value.style.color = count > 0 ? "green" : count < 0 ? "red" : "#007bff"
+    })
+}) 
+
+
+
+
+
+
+
+//We can use this logic also. please verify id and classes if want to use this logic.
+// function increaseFunction() {
+      
+//     let counter = document.getElementById("number").innerHTML;
+
+//     if (counter==0) {
+//         counter=1;
+//     } else {
+//         counter++;
+//     }
+//     document.getElementById("number").innerHTML=counter;
+//     document.getElementById("number").style.color="green";
+// }
+
+
+// function decreaseFunction() {
+//     let decreaser = document.getElementById("number").innerHTML;
+
+//     if (decreaser==0) {
+//         decreaser=decreaser-1;
+//     } else {
+//         decreaser--;
+//     }
+//     document.getElementById("number").innerHTML=decreaser;
+//     document.getElementById("number").style.color="red";
+// }
+
+
+// function resetFunction() {
+//     let resetter = document.getElementById("number").innerHTML;
+//     resetter=0;
+//     document.getElementById("number").innerHTML=resetter;
+//     document.getElementById("number").style.color="rgb(0, 174, 255)";
+// }
+
+
+    </script>
+
+</body>
+</html>

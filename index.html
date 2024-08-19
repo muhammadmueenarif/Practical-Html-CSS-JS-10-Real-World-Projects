@@ -8,32 +8,12 @@
 </head>
 
 <body>
-  
-    <div class="container">
-        <h2><u>RGB Color Generator</u></h2>
-        <div class="color-output" id="output"></div>
-        <div class="color-input">
-            <label for="red">Red:</label>
-            <!-- input rangebar line we can also use numbers as input and set their limit from 0 to 256
-             and give default value of 128-->
-             <input type="range" id="red" min="0" max="255" value
-             oninput="updateColor(this.value, 'red')"> <span>0</span> <br>
-            
-             <label for="green">Green:</label>
-            <input type="range" id="green" min="0" max="255" value
-            oninput="updateColor(this.value, 'green')"> <br>
-            <label for="blue">Blue:</label>
-            <input type="range" id="blue" min="0" max="255" value
-            oninput="updateColor(this.value, 'blue')">
-            <div class="boxes">
-                <button id="copy-color" onclick="copyCode()">Copy RGB Value</button>
-                <div class="color-code" id="rgb-code">
-                </div>
-            </div> 
-
-        </div>
-    </div>
    
+    <!-- counter application. it has two buttons. one for increment , one for decrement and third one 
+     to reset -->
+
+    <!-- since we have already done this in another project so we will not waste much time here -->
+
     <script src="script.js">
     </script>
     
