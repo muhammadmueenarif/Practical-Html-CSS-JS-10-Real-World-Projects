@@ -9,10 +9,14 @@
 
 <body>
    
-    <!-- counter application. it has two buttons. one for increment , one for decrement and third one 
-     to reset -->
+    <!-- user will give input only one word and it will tell whether the character is ascii or unicode -->
 
-    <!-- since we have already done this in another project so we will not waste much time here -->
+    <div class="container">
+        <h3>ASCII / Unicode Character Detector</h3>
+        <input type="text" id="input" placeholder="Enter a character" maxlength="1">
+        <button id="check" onclick="detectValue()">Detect</button>
+        <p id="result"></p>
+    </div>
 
     <script src="script.js">
     </script>
