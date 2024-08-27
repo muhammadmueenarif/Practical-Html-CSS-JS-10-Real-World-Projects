@@ -1,39 +1,28 @@
-// the formula for bmi is bmi = weight in kg / height in m square.
-// we are getting height in feet and inches so first we will convert it in meters.
-// bmi categories. 
-// bmi < 18.5 then underweight. if >=18.5 <=24.9 then normal weight. if >=25 and <=29.9 then overweight.
-// >= 30 then obesity.
+// love calculator
 
-document.getElementById("bmiform").addEventListener('submit', function(e) {
-    e.preventDefault(); // to avoid submit on each time.
-
-    const gender = document.getElementById('gender').value;
-    const age = parseInt(document.getElementById('age').value);
-    const heightFeet = parseInt(document.getElementById('height-feet').value);
-    const heightInches = parseInt(document.getElementById('height-inches').value);
-    const weight = parseFloat(document.getElementById('weight').value);
-
-    if (gender && age && heightFeet && heightInches && weight) {
-        const height = ((heightFeet * 12) + heightInches) * 0.0254; // convert height to meters.
-        const bmi = weight / (height * height); // calculate bmi.
-        const resultElement = document.getElementById('result');
-
-        let category = '';
-        if (bmi < 18.5) {
-            category = 'Underweight';
-        } else if (bmi >= 18.5 && bmi <= 24.9) {
-            category = 'Normal Weight';
-        } else if (bmi >= 25 && bmi <= 29.9) {
-            category = 'Overweight';
+function calculateLove() {
+    var yourName = document.getElementById('yourname').value.trim();
+    var loverName = document.getElementById('partnername').value.trim();
+    if (yourName == "" || loverName == "") {
+        alert("Please Enter Both Name");
+    } else {
+        var love = Math.floor(Math.random() * 101); // we use 101 because there is possibility that love is 100%.
+        if (love < 30) {
+            document.getElementById('love').innerHTML = `${yourName} and ${loverName} Love Percentage is ${love}%`;
+            document.getElementById('details').innerHTML = "Not a great match! Keep Looking.";
+            //clear input after showing result
+            document.getElementById('yourname').value = "";
+            document.getElementById('partnername').value = "";
+        } else if (love >= 30 && love < 70) {
+            document.getElementById('love').innerHTML = `${yourName} and ${loverName} Love Percentage is ${love}%`;
+            document.getElementById('details').innerHTML = "You guys are okay, but you can do better!";
+            document.getElementById('yourname').value = "";
+            document.getElementById('partnername').value = "";
         } else {
-            category = 'Obesity';
+            document.getElementById('love').innerHTML = `${yourName} and ${loverName} Love Percentage is ${love}%`;
+            document.getElementById('details').innerHTML = "Great match. You guys are meant to be!";
+            document.getElementById('yourname').value = "";
+            document.getElementById('partnername').value = "";
         }
-        let resultMessage = 'Your BMI: ' + bmi.toFixed(2) + '<br/>';
-        resultMessage += 'Category: ' + category;
-        resultElement.innerHTML = resultMessage;
     }
-
-});
-
-// we can do by checking condition directly and then using document.getelementbyid('result').innerHtml = 'value of calculation';
-// and set result category = normal, over, under, weight or obesity,
+}

@@ -10,31 +10,16 @@
 
 <body>
 
-
     <div class="container">
-        <h2>BMI Calculator</h2> <br>
-        <form id="bmiform">
-            <label for="gender"><b>Gender:</b></label> <br>
-            <select id="gender" name="gender">
-            <option>Male</option>
-            <option>Female</option>
-        </select>
-            <br>
-            <label for="age"><b>Age :</b></label> <br>
-            <input type="number" id="age" placeholder="Enter Age" required> <br>
-            <label for="height"><b>Height:</b></label> <br>
-            <input type="number" id="height-feet" placeholder="Enter Height in Feet" required> <br>
-            <input type="number" id="height-inches" placeholder="Enter Height in Inches"> <br>
-            <label for="weight"><b>Weight :</b></label> <br>
-            <input type="number" id="weight" placeholder="Enter Weight in Kg" required>
-            <br>
-            <button>Calculate BMI</button>
-        </form> <br>
-        <p id="result"></p> <br>
-        <p id="result-category"></p>
+        <h2>Love Calculator</h2>
+        <label for="yourname">Your Name:</label> <br>
+        <input type="text" id="yourname" placeholder="Enter Your Name">
+        <label for="partnername">Partner Name:</label> <br>
+        <input type="text" id="partnername" placeholder="Enter Your Partner Name"> <br>
+        <button onclick="calculateLove()">Calculate</button> <br>
+        <p id="love"></p>
+        <p id="details"></p>
     </div>
-
-
     <script src="script.js">
     </script>
 
