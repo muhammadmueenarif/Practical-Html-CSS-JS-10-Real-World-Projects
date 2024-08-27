@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -9,16 +10,34 @@
 
 <body>
 
-    <h1>Random Color Generator</h1>
+
     <div class="container">
-        <!-- <div class="color-container">
-            <span>#45dfff</span>
-            <button>Copy</button>
-        </div> -->
+        <h2>BMI Calculator</h2> <br>
+        <form id="bmiform">
+            <label for="gender"><b>Gender:</b></label> <br>
+            <select id="gender" name="gender">
+            <option>Male</option>
+            <option>Female</option>
+        </select>
+            <br>
+            <label for="age"><b>Age :</b></label> <br>
+            <input type="number" id="age" placeholder="Enter Age" required> <br>
+            <label for="height"><b>Height:</b></label> <br>
+            <input type="number" id="height-feet" placeholder="Enter Height in Feet" required> <br>
+            <input type="number" id="height-inches" placeholder="Enter Height in Inches"> <br>
+            <label for="weight"><b>Weight :</b></label> <br>
+            <input type="number" id="weight" placeholder="Enter Weight in Kg" required>
+            <br>
+            <button>Calculate BMI</button>
+        </form> <br>
+        <p id="result"></p> <br>
+        <p id="result-category"></p>
     </div>
+
 
     <script src="script.js">
     </script>
-    
+
 </body>
+
 </html>

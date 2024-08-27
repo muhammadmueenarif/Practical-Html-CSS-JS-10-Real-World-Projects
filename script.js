@@ -1,70 +1,39 @@
-//this is container element.
-const containerEl = document.querySelector(".container");
+// the formula for bmi is bmi = weight in kg / height in m square.
+// we are getting height in feet and inches so first we will convert it in meters.
+// bmi categories. 
+// bmi < 18.5 then underweight. if >=18.5 <=24.9 then normal weight. if >=25 and <=29.9 then overweight.
+// >= 30 then obesity.
 
-for(let index=0; index<50; index++) {
-    //this is color container element.
-    const colorContainerEl = document.createElement("div");
-    //now we need to add class so we will use classlist. 
-    colorContainerEl.classList.add("color-container");
+document.getElementById("bmiform").addEventListener('submit', function(e) {
+    e.preventDefault(); // to avoid submit on each time.
 
-    //since our main element is container element so we will append other things inside it.
+    const gender = document.getElementById('gender').value;
+    const age = parseInt(document.getElementById('age').value);
+    const heightFeet = parseInt(document.getElementById('height-feet').value);
+    const heightInches = parseInt(document.getElementById('height-inches').value);
+    const weight = parseFloat(document.getElementById('weight').value);
 
-    const colorCodeEl= document.createElement("span"); //it will create span
-    colorCodeEl.classList.add("color-code"); //it will give class to span
-    colorContainerEl.appendChild(colorCodeEl); //color container will have span element with class color-code
+    if (gender && age && heightFeet && heightInches && weight) {
+        const height = ((heightFeet * 12) + heightInches) * 0.0254; // convert height to meters.
+        const bmi = weight / (height * height); // calculate bmi.
+        const resultElement = document.getElementById('result');
 
-    const copyButtonEl= document.createElement("button"); //create button
-    copyButtonEl.innerText = "Copy"; // button will have text copy.
-    colorContainerEl.appendChild(copyButtonEl); //color container will have button with text copy inside it.
-
-    containerEl.appendChild(colorContainerEl);
-
-}
-
-//now we will create function to generate color randomly. 6 digits random color code (#A-Z, 0-9).
-function randomColor() {
-    const chars = "0123456789ABCDEF";
-    const colorCodeLength = 6;
-    let colorCode = "";
-    for(let index=0; index<colorCodeLength; index++) {
-        const randomNum= Math.floor(Math.random()*chars.length);
-        colorCode += chars.substring(randomNum, randomNum+1); // it will store color and initiliaze also. 
-        // substring accepts two arguments. one is starting index and other is ending index.
+        let category = '';
+        if (bmi < 18.5) {
+            category = 'Underweight';
+        } else if (bmi >= 18.5 && bmi <= 24.9) {
+            category = 'Normal Weight';
+        } else if (bmi >= 25 && bmi <= 29.9) {
+            category = 'Overweight';
+        } else {
+            category = 'Obesity';
+        }
+        let resultMessage = 'Your BMI: ' + bmi.toFixed(2) + '<br/>';
+        resultMessage += 'Category: ' + category;
+        resultElement.innerHTML = resultMessage;
     }
-    return colorCode; //it will return color code.
-}
 
-//now we will create function to generate random colors
-const colorContainerEls = document.querySelectorAll(".color-container")
-generateColors();
+});
 
-function generateColors() {
-    for (let i = 0; i < colorContainerEls.length; i++) {
-        const colorContainerEl = colorContainerEls[i];
-        const newColorCode= randomColor();
-        const colorCodeEl = colorContainerEl.querySelector(".color-code");
-        colorCodeEl.style.backgroundColor = "#" + newColorCode;
-        colorCodeEl.innerText = "#" + newColorCode;
-    }
-}
-
-colorContainerEls.forEach((colorContainerEl)=> {
-    const copyButtonEl = colorContainerEl.querySelector("button");
-    const colorCodeEl = colorContainerEl.querySelector(".color-code");
-    copyButtonEl.addEventListener("click", () => {
-        const colorCode = colorCodeEl.innerText;
-        copytoClipBoard(colorCode);
-        });
-})
-
-// now we will create function to copy the color code. 
-function copytoClipBoard(text) {
-    navigator.clipboard.writeText(text)
-    .then(()=> {
-        alert("Copied to clipboard : " + text);
-    })
-    .catch((error)=> {
-        console.log("Failed to copy to clipboard", error);
-        
-    })
-}
+// we can do by checking condition directly and then using document.getelementbyid('result').innerHtml = 'value of calculation';
+// and set result category = normal, over, under, weight or obesity,
