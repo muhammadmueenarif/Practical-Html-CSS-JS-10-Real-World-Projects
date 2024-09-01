@@ -11,17 +11,25 @@
 <body>
 
     <div class="container">
-        <h2>Love Calculator</h2>
-        <label for="yourname">Your Name:</label> <br>
-        <input type="text" id="yourname" placeholder="Enter Your Name">
-        <label for="partnername">Partner Name:</label> <br>
-        <input type="text" id="partnername" placeholder="Enter Your Partner Name"> <br>
-        <button onclick="calculateLove()">Calculate</button> <br>
-        <p id="love"></p>
-        <p id="details"></p>
+        <h2>Loan Calculator</h2>
+        <label for="loan-amount">Loan Amount</label> <br>
+        <input type="number" id="loan-amount"> <br>
+
+        <label for="intrest-rate">Intrest Rate (%)</label> <br>
+        <input type="number" id="intrest-rate"> <br>
+
+        <label for="loan-term">Loan Term (in Months)</label> <br>
+        <input type="number" id="loan-time"> <br>
+        <button onclick="calculatePrice()">Calculate</button>
+
+        <div class="result-box">
+            <p>Final Result</p>
+        </div>
     </div>
+
     <script src="script.js">
     </script>
+
 
 </body>
 

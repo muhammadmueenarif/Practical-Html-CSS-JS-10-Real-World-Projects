@@ -1,28 +1,26 @@
-// love calculator
+// we can do this by following method also but there is some error in logic.
+function calculatePrice() {
+  let loanAmount = parseFloat(document.getElementById("loan-amount").value);
+  let intrestRate = parseFloat(document.getElementById("intrest-rate").value);
+  let loanTime = parseFloat(document.getElementById("loan-time").value);
 
-function calculateLove() {
-    var yourName = document.getElementById('yourname').value.trim();
-    var loverName = document.getElementById('partnername').value.trim();
-    if (yourName == "" || loverName == "") {
-        alert("Please Enter Both Name");
-    } else {
-        var love = Math.floor(Math.random() * 101); // we use 101 because there is possibility that love is 100%.
-        if (love < 30) {
-            document.getElementById('love').innerHTML = `${yourName} and ${loverName} Love Percentage is ${love}%`;
-            document.getElementById('details').innerHTML = "Not a great match! Keep Looking.";
-            //clear input after showing result
-            document.getElementById('yourname').value = "";
-            document.getElementById('partnername').value = "";
-        } else if (love >= 30 && love < 70) {
-            document.getElementById('love').innerHTML = `${yourName} and ${loverName} Love Percentage is ${love}%`;
-            document.getElementById('details').innerHTML = "You guys are okay, but you can do better!";
-            document.getElementById('yourname').value = "";
-            document.getElementById('partnername').value = "";
-        } else {
-            document.getElementById('love').innerHTML = `${yourName} and ${loverName} Love Percentage is ${love}%`;
-            document.getElementById('details').innerHTML = "Great match. You guys are meant to be!";
-            document.getElementById('yourname').value = "";
-            document.getElementById('partnername').value = "";
-        }
-    }
+  if (isNaN(loanAmount) || isNaN(intrestRate) || isNaN(loanTime)) {
+    // alert('please enter valid value in all fields');
+    //or
+    document.querySelector(".result-box").style.height = "20vh";
+    document.getElementsByTagName("p")[0].innerHTML = `<br/> Please enter valid value in all fields`;
+    document.getElementsByTagName("p")[0].style.color = "red";
+  } else {
+    let monthlyIntrest = intrestRate / 100 / 12;
+    let totalPayments = loanTime;
+    let monthlyPayment=(loanAmount*monthlyIntrest)/(1-Math.pow(1+ monthlyIntrest, -totalPayments));
+
+    let totalInterest = (monthlyPayment * totalPayments) - loanAmount;
+
+    //increase height of box with class result-box.
+    document.querySelector(".result-box").style.height = "20vh";
+    document.getElementsByTagName("p")[0].innerHTML = `<br/> Monthly Payment:${monthlyPayment.toFixed(2)} <br/> <br/> Total Intrest: ${totalInterest.toFixed(2)}`;
+    document.getElementsByTagName("p")[0].style.color = "black";
+    //toFixed function is used to display how much values after decimal.
+  }
 }
