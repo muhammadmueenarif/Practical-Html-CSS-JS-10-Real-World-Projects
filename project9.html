@@ -6,13 +6,131 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Loan Calculator</title>
     <style>
+        * {
+    margin: 0;
+    padding: 0;
+}
 
+body {
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #f0f0f0;
+}
+
+.container {
+    width: 40%;
+    height: 75vh;
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    padding: 8px;
+    display: flex;
+    flex-direction: column;
+}
+
+h2 {
+    text-align: center;
+    text-decoration: underline;
+}
+
+label {
+    margin-top: 3%;
+}
+
+label,
+input {
+    margin-left: 5%;
+}
+
+input {
+    width: 80%;
+    height: 3vh;
+    padding: 3px;
+}
+
+button {
+    width: 20%;
+    height: 5vh;
+    background-color: #4CAF50;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-left: 39%;
+}
+
+button:hover {
+    background-color: #3e8e41;
+}
+
+.result-box {
+    margin-top: 3%;
+    width: 100%;
+    height: 8vh;
+    background-color: rgb(228, 217, 217);
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+}
+
+p {
+    margin-top: 2%;
+    margin-left: 5%;
+    font-weight: bold;
+}
     </style>
 </head>
 
 <body>
 
+    <div class="container">
+        <h2>Loan Calculator</h2>
+        <label for="loan-amount">Loan Amount</label> <br>
+        <input type="number" id="loan-amount"> <br>
+
+        <label for="intrest-rate">Intrest Rate (%)</label> <br>
+        <input type="number" id="intrest-rate"> <br>
+
+        <label for="loan-term">Loan Term (in Months)</label> <br>
+        <input type="number" id="loan-time"> <br>
+        <button onclick="calculatePrice()">Calculate</button>
+
+        <div class="result-box">
+            <p>Final Result</p>
+        </div>
+    </div>
+    
+
     <script>
+        // we can do this by following method also but there is some error in logic.
+function calculatePrice() {
+  let loanAmount = parseFloat(document.getElementById("loan-amount").value);
+  let intrestRate = parseFloat(document.getElementById("intrest-rate").value);
+  let loanTime = parseFloat(document.getElementById("loan-time").value);
+
+  if (isNaN(loanAmount) || isNaN(intrestRate) || isNaN(loanTime)) {
+    // alert('please enter valid value in all fields');
+    //or
+    document.querySelector(".result-box").style.height = "20vh";
+    document.getElementsByTagName("p")[0].innerHTML = `<br/> Please enter valid value in all fields`;
+    document.getElementsByTagName("p")[0].style.color = "red";
+  } else {
+    let monthlyIntrest = intrestRate / 100 / 12;
+    let totalPayments = loanTime;
+    let monthlyPayment=(loanAmount*monthlyIntrest)/(1-Math.pow(1+ monthlyIntrest, -totalPayments));
+
+    let totalInterest = (monthlyPayment * totalPayments) - loanAmount;
+
+    //increase height of box with class result-box.
+    document.querySelector(".result-box").style.height = "20vh";
+    document.getElementsByTagName("p")[0].innerHTML = `<br/> Monthly Payment:${monthlyPayment.toFixed(2)} <br/> <br/> Total Intrest: ${totalInterest.toFixed(2)}`;
+    document.getElementsByTagName("p")[0].style.color = "black";
+    //toFixed function is used to display how much values after decimal.
+  }
+}
+
     </script>
 </body>
 
